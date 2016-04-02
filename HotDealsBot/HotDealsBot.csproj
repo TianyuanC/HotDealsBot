@@ -108,6 +108,7 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Model\SearchResponse.cs" />
+    <Compile Include="Service\HotDealService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

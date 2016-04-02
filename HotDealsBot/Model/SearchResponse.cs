@@ -1,6 +1,6 @@
 ﻿namespace HotDealsBot.Model
 {
-    public class SearchModel
+    public class SearchResponse
     {
         public object Facets { get; set; }
         public Hit[] Hits { get; set; }
@@ -13,6 +13,6 @@
         public int Id { get; set; }
         public int SourceId { get; set; }
         public string ForeignId { get; set; }
-        public Ad DocumentXml { get; set; }
+        public string DocumentXml { get; set; }
     }
 }

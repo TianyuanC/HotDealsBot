@@ -8,6 +8,7 @@ using System.Web.Http.Description;
 using Microsoft.Bot.Connector;
 using Microsoft.Bot.Connector.Utilities;
 using Newtonsoft.Json;
+using HotDealsBot.Service;
 
 namespace HotDealsBot
 {
@@ -22,7 +23,9 @@ namespace HotDealsBot
         {
             if (message.Type == "Message")
             {
-                return message.CreateReplyMessage();
+                var hotDeal = new HotDealService();
+                var result = await hotDeal.Get();
+                return message.CreateReplyMessage(result);
             }
             else
             {
