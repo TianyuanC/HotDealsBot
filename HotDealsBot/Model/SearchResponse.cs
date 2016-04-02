@@ -1,4 +1,7 @@
-﻿namespace HotDealsBot.Model
+﻿/// <summary>
+/// Auto Generated, DNT
+/// </summary>
+namespace HotDealsBot.Model
 {
     public class SearchResponse
     {

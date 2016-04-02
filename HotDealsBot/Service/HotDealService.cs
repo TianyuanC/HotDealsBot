@@ -1,12 +1,12 @@
-﻿using System;
+﻿using HotDealsBot.Model;
+using HotDealsBot.Model.Extraction;
+using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.IO;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using HotDealsBot.Model;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
-using System.IO;
 
 namespace HotDealsBot.Service
 {
@@ -35,7 +35,7 @@ namespace HotDealsBot.Service
                     }   
                 }
             }
-            return $"{result.Count} hot deals, first ad id is {ads[0].ID}";
+            return $"{result.Count} hot deals, first ad is {ads[0].Color()} {ads[0].Year()} {ads[0].Make()} {ads[0].Model()}";
         }
     }
 }

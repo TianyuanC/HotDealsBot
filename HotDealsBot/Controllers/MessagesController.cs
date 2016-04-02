@@ -1,14 +1,8 @@
-﻿using System;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Threading.Tasks;
-using System.Web.Http;
-using System.Web.Http.Description;
+﻿using HotDealsBot.Service;
 using Microsoft.Bot.Connector;
 using Microsoft.Bot.Connector.Utilities;
-using Newtonsoft.Json;
-using HotDealsBot.Service;
+using System.Threading.Tasks;
+using System.Web.Http;
 
 namespace HotDealsBot
 {
