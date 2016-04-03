@@ -3,11 +3,13 @@
 /// </summary>
 namespace HotDealsBot.Model
 {
+
     /// <remarks/>
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
     [System.Xml.Serialization.XmlRootAttribute(Namespace = "", IsNullable = false)]
     public partial class Ad
     {
+
         private AdLocations locationsField;
 
         private AdSource sourceField;
@@ -26,15 +28,17 @@ namespace HotDealsBot.Model
 
         private AdContacts contactsField;
 
-        private AdUpsells upsellsField;
+        private AdUpsell[] upsellsField;
 
-        private AdResources resourcesField;
+        private AdResource[] resourcesField;
 
         private AdOption[] optionsField;
 
         private AdStructure[] structuresField;
 
         private AdPrice[] pricesField;
+
+        private AdDescription descriptionField;
 
         private AdWarranties warrantiesField;
 
@@ -175,7 +179,8 @@ namespace HotDealsBot.Model
         }
 
         /// <remarks/>
-        public AdUpsells Upsells
+        [System.Xml.Serialization.XmlArrayItemAttribute("Upsell", IsNullable = false)]
+        public AdUpsell[] Upsells
         {
             get
             {
@@ -188,7 +193,8 @@ namespace HotDealsBot.Model
         }
 
         /// <remarks/>
-        public AdResources Resources
+        [System.Xml.Serialization.XmlArrayItemAttribute("Resource", IsNullable = false)]
+        public AdResource[] Resources
         {
             get
             {
@@ -239,6 +245,19 @@ namespace HotDealsBot.Model
             set
             {
                 this.pricesField = value;
+            }
+        }
+
+        /// <remarks/>
+        public AdDescription Description
+        {
+            get
+            {
+                return this.descriptionField;
+            }
+            set
+            {
+                this.descriptionField = value;
             }
         }
 
@@ -1508,28 +1527,7 @@ namespace HotDealsBot.Model
 
     /// <remarks/>
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
-    public partial class AdUpsells
-    {
-
-        private AdUpsellsUpsell upsellField;
-
-        /// <remarks/>
-        public AdUpsellsUpsell Upsell
-        {
-            get
-            {
-                return this.upsellField;
-            }
-            set
-            {
-                this.upsellField = value;
-            }
-        }
-    }
-
-    /// <remarks/>
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
-    public partial class AdUpsellsUpsell
+    public partial class AdUpsell
     {
 
         private string typeField;
@@ -1583,31 +1581,10 @@ namespace HotDealsBot.Model
 
     /// <remarks/>
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
-    public partial class AdResources
+    public partial class AdResource
     {
 
-        private AdResourcesResource resourceField;
-
-        /// <remarks/>
-        public AdResourcesResource Resource
-        {
-            get
-            {
-                return this.resourceField;
-            }
-            set
-            {
-                this.resourceField = value;
-            }
-        }
-    }
-
-    /// <remarks/>
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
-    public partial class AdResourcesResource
-    {
-
-        private AdResourcesResourceSource sourceField;
+        private AdResourceSource sourceField;
 
         private string typeField;
 
@@ -1622,7 +1599,7 @@ namespace HotDealsBot.Model
         private System.DateTime lastModificationField;
 
         /// <remarks/>
-        public AdResourcesResourceSource Source
+        public AdResourceSource Source
         {
             get
             {
@@ -1721,7 +1698,7 @@ namespace HotDealsBot.Model
 
     /// <remarks/>
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
-    public partial class AdResourcesResourceSource
+    public partial class AdResourceSource
     {
 
         private byte idField;
@@ -1921,6 +1898,27 @@ namespace HotDealsBot.Model
 
     /// <remarks/>
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
+    public partial class AdDescription
+    {
+
+        private string defaultField;
+
+        /// <remarks/>
+        public string Default
+        {
+            get
+            {
+                return this.defaultField;
+            }
+            set
+            {
+                this.defaultField = value;
+            }
+        }
+    }
+
+    /// <remarks/>
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
     public partial class AdWarranties
     {
 
@@ -1977,4 +1975,6 @@ namespace HotDealsBot.Model
             }
         }
     }
+
+
 }
