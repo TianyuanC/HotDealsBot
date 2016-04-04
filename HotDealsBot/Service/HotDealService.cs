@@ -12,7 +12,7 @@ namespace HotDealsBot.Service
 {
     public class HotDealService
     {
-        public async Task<string> Get()
+        public async Task<string> Search(string refinements)
         {
             var ads = new List<Ad>();
             var result = new SearchResponse();
@@ -22,10 +22,14 @@ namespace HotDealsBot.Service
                 client.BaseAddress = new Uri("https://search.autotrader.ca/");
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                HttpResponseMessage response = await client.GetAsync("api/ad/?v=2&sps=true&c=1&d=1&t=3&haspr=true");
+                HttpResponseMessage response = await client.GetAsync($"api/ad/?v=2&sps=true&c=1&d=1&t=3&haspr=true{refinements}");
                 if (response.IsSuccessStatusCode)
                 {
                     result = await response.Content.ReadAsAsync<SearchResponse>();
+                    if (result.Count == 0)
+                    {
+                        return "No deals found currently, please check other Make and Model";
+                    }
                     //decode embeded xml
                     foreach (var hit in result.Hits)
                     {

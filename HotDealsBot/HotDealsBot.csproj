@@ -107,9 +107,11 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Model\Extraction\AdExtraction.cs" />
+    <Compile Include="Model\LuisResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Model\SearchResponse.cs" />
     <Compile Include="Service\HotDealService.cs" />
+    <Compile Include="Service\LuisService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

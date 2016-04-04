@@ -10,6 +10,23 @@ namespace HotDealsBot
     public class MessagesController : ApiController
     {
         /// <summary>
+        /// LUIS Service
+        /// </summary>
+        private readonly LuisService luis;
+        /// <summary>
+        /// Hot Deal Search Service
+        /// </summary>
+        private readonly HotDealService hotDeal;
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        public MessagesController()
+        {
+            luis = new LuisService();
+            hotDeal = new HotDealService();
+        }
+        /// <summary>
         /// POST: api/Messages
         /// Receive a message from a user and reply to it
         /// </summary>
@@ -17,8 +34,8 @@ namespace HotDealsBot
         {
             if (message.Type == "Message")
             {
-                var hotDeal = new HotDealService();
-                var result = await hotDeal.Get();
+                var refinements = await luis.Listen(message.Text);
+                var result = await hotDeal.Search(refinements);
                 return message.CreateReplyMessage(result);
             }
             else
@@ -27,6 +44,11 @@ namespace HotDealsBot
             }
         }
 
+        /// <summary>
+        /// System Messages
+        /// </summary>
+        /// <param name="message"></param>
+        /// <returns></returns>
         private Message HandleSystemMessage(Message message)
         {
             if (message.Type == "Ping")
